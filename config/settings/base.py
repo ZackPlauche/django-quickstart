@@ -31,9 +31,12 @@ INSTALLED_APPS = [
 
     # 3rd Party Apps
     'django_extensions',
+    'rest_framework',
+    'dynamic_preferences',
 
     # Your apps
-    # 'accounts',  # Optional usage of custom user model. Be sure to uncomment the "AUTH_USER_MODEL" setting below as well.
+    'accounts',
+    'jurni',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'dynamic_preferences.processors.global_preferences',
             ],
         },
     },
@@ -120,7 +124,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = 'media'
+MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -129,4 +133,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTH_USER_MODEL = 'accounts.User'  # Uncomment if using custom user model.
+AUTH_USER_MODEL = 'accounts.User'  # Uncomment if using custom user model.

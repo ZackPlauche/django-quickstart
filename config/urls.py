@@ -3,8 +3,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework import routers
+from jurni import views
+
+router = routers.DefaultRouter()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('jurni.urls')),
 ]
 
 if settings.DEBUG:
