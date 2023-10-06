@@ -114,7 +114,7 @@ USE_TZ = True
 
 
 STATICFILES_DIRS = [
-    # BASE_DIR / 'static',  # Uncomment to use static folder in root directory
+    BASE_DIR / 'static',
 ]
 
 STATIC_URL = 'static/'
