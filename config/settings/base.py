@@ -31,12 +31,9 @@ INSTALLED_APPS = [
 
     # 3rd Party Apps
     'django_extensions',
-    'rest_framework',
-    'dynamic_preferences',
 
     # Your apps
-    'accounts',
-    'jurni',
+    # 'accounts',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +59,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'dynamic_preferences.processors.global_preferences',
             ],
         },
     },
@@ -116,8 +112,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    # BASE_DIR / 'static',  # Uncomment to use static folder in root directory
 ]
 
 STATIC_URL = 'static/'
@@ -133,4 +130,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.User'  # Uncomment if using custom user model.
+# AUTH_USER_MODEL = 'accounts.User'  # Uncomment if using custom user model.
