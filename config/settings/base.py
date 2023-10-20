@@ -13,9 +13,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+load_dotenv(find_dotenv())  # Load environment variables from .env file.
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -33,11 +34,12 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # Your apps
-    # 'accounts',
+    # 'accounts',  # Optional accounts app if you want to use a custom user model.
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenose.middleware.WhiteNoiseMiddleware',  # Uncomment if you want to use whitenoise for staticfile serving.
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,11 +72,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DATABASES = { 
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600) 
 }
 
 
@@ -112,10 +111,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Uncomment if you want to use whitenoise for staticfile serving.
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+# STATICFILES_DIRS = [ BASE_DIR / 'static' ]  # Uncomment if you want django to find static files in a folder called static in your base directory.
 
 STATIC_URL = 'static/'
 
